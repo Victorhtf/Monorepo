@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 
-export function Card({
+export default function Card({
   title,
   children,
   href,

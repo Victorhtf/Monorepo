@@ -1,11 +1,6 @@
-import type { Config } from "tailwindcss";
-
+/** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -24,8 +19,7 @@ export default {
     },
   },
   plugins: [
-    function ({ addComponents }: any) {
-      // Explicitamente tipado como 'any'
+    function ({ addComponents }) {
       const buttons = {
         ".btn": {
           display: "inline-flex",
@@ -70,4 +64,4 @@ export default {
       addComponents(buttons);
     },
   ],
-} as Config;
+};
