@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { Inter } from "next/font/google";
 import Header from "../components/Layout/Header";
-import "../styles/globals.css";
+import "../../styles/globals.css";
 import Background from "../components/Layout/Background";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,15 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-x-hidden`}>
-        <React.Fragment>
-          <Header />
-          <div className="flex flex-col h-screen">
-            <main className="flex-1 w-full flex items-center justify-center">
-              {children}
-              {/* <Background>{children}</Background> */}
-            </main>
-          </div>
-        </React.Fragment>
+        <Header />
+        <div className="flex flex-col h-screen">
+          <main className="flex-1 w-full flex items-center justify-center">
+            {children}
+            <Background>{children}</Background>
+          </main>
+        </div>
       </body>
     </html>
   );

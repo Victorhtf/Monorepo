@@ -1,29 +1,15 @@
-"use client"; // Adicione esta linha no topo do arquivo
+"use client";
 
 import { useEffect, useState } from "react";
-import { LanguageSelector } from "@repo/ui";
+import { LanguageSelector, Profile } from "@repo/ui";
 import { Notifications } from "@repo/ui";
 
 export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>("null");
   const isAuthenticated = true;
 
-  function handleLogout() {
-    alert("Logged out!");
-  }
-
-  const toggleProfileDropdown = () => {
-    setActiveDropdown(activeDropdown === "profile" ? null : "profile");
-  };
-
-  const toggleLanguageDropdown = () => {
-    setActiveDropdown(activeDropdown === "language" ? null : "language");
-  };
-
-  const toggleNotificationsDropdown = () => {
-    setActiveDropdown(
-      activeDropdown === "notifications" ? null : "notifications"
-    );
+  const handleLogout = () => {
+    console.log("Usuário desconectado");
   };
 
   useEffect(() => {
@@ -43,8 +29,40 @@ export default function Header() {
     };
   }, []);
 
+  const userData = {
+    userName: "Your Name",
+    userRole: "Marketing Manager",
+    profileImage:
+      "https://th.bing.com/th/id/OIP.EVCGXvrjsvMrhfOX3su_FgHaHa?rs=1&pid=ImgDetMain",
+  };
+
+  const languages = [
+    { code: "en", label: "English", flag: "🇺🇸" },
+    { code: "pt-BR", label: "Português", flag: "🇧🇷" },
+    { code: "es", label: "Español", flag: "🇪🇸" },
+  ];
+
+  const [currentLanguage, setCurrentLanguage] = useState("en");
+
+  const handleLanguageChange = (language: string) => {
+    console.log("Language changed to:", language);
+    setCurrentLanguage(language);
+    // Aqui você pode chamar a função do i18n ou qualquer outra lógica
+  };
+
+  const actions = [
+    { label: "My Profile", action: () => alert("Profile clicked") },
+    { label: "Settings", action: () => alert("Settings clicked") },
+  ];
+
+  const notifications = [
+    { label: "New message", onClick: () => console.log("New message clicked") },
+    { label: "Update available", onClick: () => console.log("Update clicked") },
+    { label: "Action required", onClick: () => console.log("Action clicked") },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-background-color border-b border-border-color shadow-md h-20 z-50">
+    <header className="bg-background-color border-b border-border-color shadow-md h-20">
       <div className="container mx-auto px-4 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Left side - Logo and Navigation Links */}
@@ -92,50 +110,20 @@ export default function Header() {
               <input
                 type="text"
                 placeholder="Search"
-                className="flex items-center justify-center px-4 py-2 border border-border-color rounded-lg w-full bg-background-color hover:bg-hover-color text-text-color transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color"
+                className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg w-full bg-background-color hover:bg-hover-color text-text-color transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color"
               />
             </div>
             {isAuthenticated ? (
               <>
                 {/* Notifications */}
-                <Notifications />
+                <Notifications notifications={notifications} />
 
                 {/* Profile */}
-                <div className="relative dropdown">
-                  <button
-                    onClick={toggleProfileDropdown}
-                    className="flex items-center cursor-pointer space-x-3 hover:bg-hover-color rounded-lg p-2 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color"
-                  >
-                    <img
-                      src="https://www.profilebakery.com/wp-content/uploads/2023/04/Profile-Image-AI.jpg"
-                      alt="Profile"
-                      className="w-10 h-10 rounded-full"
-                    />
-                    <div className="flex flex-col">
-                      <p className="font-bold text-text-color">Your name</p>
-                      <p className="font-medium text-sm text-text-color">
-                        Marketing manager
-                      </p>
-                    </div>
-                  </button>
-
-                  {activeDropdown === "profile" && (
-                    <ul className="absolute mt-2 w-48 bg-background-color border border-border-color shadow-lg rounded-md z-10">
-                      <li className="px-4 py-2 text-text-color hover:bg-hover-color cursor-pointer">
-                        My Profile
-                      </li>
-                      <li className="px-4 py-2 text-text-color hover:bg-hover-color cursor-pointer">
-                        Settings
-                      </li>
-                      <li
-                        onClick={handleLogout}
-                        className="px-4 py-2 text-text-color hover:bg-hover-color cursor-pointer"
-                      >
-                        Logout
-                      </li>
-                    </ul>
-                  )}
-                </div>
+                <Profile
+                  userData={userData}
+                  handleLogout={handleLogout}
+                  actions={actions}
+                />
               </>
             ) : (
               <>
@@ -146,7 +134,11 @@ export default function Header() {
             )}
 
             {/* Language dropdown */}
-            <LanguageSelector />
+            <LanguageSelector
+              languages={languages}
+              currentLanguage={currentLanguage}
+              onLanguageChange={handleLanguageChange}
+            />
           </div>
         </div>
       </div>
