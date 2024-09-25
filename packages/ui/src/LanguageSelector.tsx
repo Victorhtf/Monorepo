@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface Language {
   code: string;
@@ -8,42 +8,40 @@ interface Language {
 
 interface LanguageSelectProps {
   languages: Language[];
-  currentLanguage: string;
-  onLanguageChange: (language: string) => void;
+  defaultValue: string;
+  onLanguageChange: (newLocale: string) => void;
 }
 
-const LanguageSelect: React.FC<LanguageSelectProps> = ({
+export default function LanguageSelector({
   languages,
-  currentLanguage,
+  defaultValue,
   onLanguageChange,
-}) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+}: LanguageSelectProps) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState(defaultValue);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const toggleLanguageSelect = () => {
     setIsDropdownOpen(!isDropdownOpen);
-
-    if (isDropdownOpen && buttonRef.current) {
-      buttonRef.current.blur();
-    }
   };
 
-  const handleLanguageChange = (language: string) => {
-    onLanguageChange(language);
+  const handleLanguageChange = (newLocale: string) => {
+    setCurrentLanguage(newLocale);
+    onLanguageChange(newLocale);
     setIsDropdownOpen(false);
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    ) {
-      setIsDropdownOpen(false);
-    }
-  };
-
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -58,6 +56,9 @@ const LanguageSelect: React.FC<LanguageSelectProps> = ({
         className="inline-flex items-center px-2 py-2 border border-border-color text-sm font-medium rounded-md text-text-color bg-background-color hover:bg-hover-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color transition duration-150 ease-in-out"
       >
         <span>
+          {languages
+            .find((lang) => lang.code === currentLanguage)
+            ?.code.toUpperCase()}{" "}
           {languages.find((lang) => lang.code === currentLanguage)?.flag}{" "}
         </span>
       </button>
@@ -76,6 +77,4 @@ const LanguageSelect: React.FC<LanguageSelectProps> = ({
       )}
     </div>
   );
-};
-
-export default LanguageSelect;
+}

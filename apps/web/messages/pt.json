@@ -1,0 +1,79 @@
+{
+  "auth": {
+    "unauthorized": "Você não tem permissão para ver isso.",
+    "authorized": "Autorizado",
+    "session_expired": "Sua sessão expirou. Por favor, faça login novamente.",
+    "access_denied": "Acesso negado"
+  },
+  "login": {
+    "title": "Faça login na sua conta",
+    "get_started": "Começar",
+    "sign_in": "Entrar",
+    "register": "Registrar-se",
+    "success": "Login realizado com sucesso",
+    "fail": "Falha no login. Por favor, verifique suas credenciais.",
+    "sign_out": "Sair",
+    "forgot_password": "Esqueceu sua senha?",
+    "remember_me": "Lembrar-me"
+  },
+  "welcome_message": "Bem-vindo ao seu Gerenciador de Conteúdo de Marketing",
+  "form": {
+    "username": "Nome de usuário",
+    "username_placeholder": "Nome de usuário",
+    "password": "Senha",
+    "password_placeholder": "Senha",
+    "email": "E-mail",
+    "address": "Endereço",
+    "submit": "Enviar",
+    "reset": "Redefinir",
+    "required_field": "Este campo é obrigatório",
+    "invalid_email": "Por favor, insira um endereço de e-mail válido"
+  },
+  "sections": {
+    "home": "Início",
+    "dashboards": "Painéis",
+    "posts": "Publicações",
+    "analytics": "Análises",
+    "settings": "Configurações",
+    "profile": "Perfil",
+    "help": "Ajuda",
+    "log_out": "Sair"
+  },
+  "search": {
+    "placeholder": "Buscar...",
+    "no_results": "Nenhum resultado encontrado"
+  },
+  "website": {
+    "logo": "Logo",
+    "footer": {
+      "contact_us": "Fale Conosco",
+      "privacy_policy": "Política de Privacidade",
+      "terms_of_service": "Termos de Serviço",
+      "all_rights_reserved": "Todos os direitos reservados"
+    }
+  },
+  "navigation": {
+    "back_to_home": "Voltar para o Início",
+    "next": "Próximo",
+    "previous": "Anterior"
+  },
+  "notifications": {
+    "new_message": "Você tem uma nova mensagem",
+    "update_available": "Uma atualização está disponível",
+    "action_required": "Ação necessária"
+  },
+  "profile": {
+    "image_alt": "Foto de Perfil",
+    "occupation": "Gerente de Marketing",
+    "my_profile": "Meu Perfil",
+    "settings": "Configurações",
+    "logout": "Sair"
+  },
+  "language": {
+    "portuguese": "Português",
+    "english": "Inglês"
+  },
+  "pages": {
+    "page_not_found": "Página não encontrada"
+  }
+}
