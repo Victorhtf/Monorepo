@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@somaprod/fe",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
-    "@repo/ui": "*",
+    "@somaprod/ui": "*",
     "@supabase/supabase-js": "^2.45.4",
     "framer-motion": "^11.7.0",
     "next": "^14.2.3",
@@ -24,9 +24,9 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
-    "@repo/eslint-config": "*",
-    "@repo/tailwind-config": "*",
-    "@repo/typescript-config": "*",
+    "@somaprod/eslint-config": "*",
+    "@somaprod/tailwind-config": "*",
+    "@somaprod/typescript-config": "*",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",

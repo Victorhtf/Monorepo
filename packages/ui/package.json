@@ -22,9 +22,9 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/tailwind-config": "*",
-    "@repo/typescript-config": "*",
+    "@somaprod/eslint-config": "*",
+    "@somaprod/tailwind-config": "*",
+    "@somaprod/typescript-config": "*",
     "@types/react": "^18.2.61",
     "autoprefixer": "^10.4.18",
     "postcss": "^8.4.35",

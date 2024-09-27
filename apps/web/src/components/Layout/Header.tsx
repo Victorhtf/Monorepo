@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
-import { LanguageSelector, Profile } from "@repo/ui";
+import { LanguageSelector, Profile, ThemeSwitcher } from "@repo/ui";
 import { Notifications } from "@repo/ui";
 
 export default function Header() {
@@ -122,10 +122,10 @@ export default function Header() {
                   {t("sections.dashboards")}
                 </a>
                 <a
-                  href={`/${locale}/posts`}
+                  href={`/${locale}/monitoring`}
                   className="text-text-color hover:text-hover-color"
                 >
-                  {t("sections.posts")}
+                  {t("sections.monitoring")}
                 </a>
                 <a
                   href={`/${locale}/analytics`}
@@ -170,6 +170,7 @@ export default function Header() {
               defaultValue={locale}
               onLanguageChange={handleLanguageChange}
             />
+            <ThemeSwitcher></ThemeSwitcher>
           </div>
         </div>
       </div>

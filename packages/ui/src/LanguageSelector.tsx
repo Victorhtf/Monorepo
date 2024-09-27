@@ -55,7 +55,7 @@ export default function LanguageSelector({
       <button
         ref={buttonRef}
         onClick={toggleLanguageSelect}
-        className="inline-flex items-center px-2 py-2 border border-border-color text-sm font-medium rounded-md text-text-color bg-background-color hover:bg-hover-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color transition duration-150 ease-in-out"
+        className="inline-flex items-center px-2 py-2 border border-[var(--border-color)] text-sm font-medium rounded-md text-[var(--text-color)] bg-[var(--background-color)] hover:bg-[var(--hover-color)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-color)] transition duration-150 ease-in-out"
       >
         <span>
           {languages
@@ -65,11 +65,11 @@ export default function LanguageSelector({
         </span>
       </button>
       {isDropdownOpen && (
-        <ul className="absolute left-0 mt-2 block w-48 bg-background-color border border-border-color shadow-lg rounded-md z-20">
+        <ul className="absolute left-0 mt-2 block w-48 bg-[var(--background-color)] border border-[var(--border-color)] shadow-lg rounded-md z-20">
           {languages.map((language) => (
             <li
               key={language.code}
-              className="text-text-color px-4 py-2 hover:bg-hover-color cursor-pointer"
+              className="text-[var(--text-color)] px-4 py-2 hover:bg-[var(--hover-color)] cursor-pointer"
               onClick={() => handleLanguageChange(language.code)}
             >
               {language.flag} {language.label}
