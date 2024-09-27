@@ -1,0 +1,21 @@
+{
+    "name": "@somaprod/sentry-config",
+    "version": "0.1.0",
+    "private": true,
+    "main": "base.js",
+    "types": "base.d.ts",
+    "scripts": {
+        "lint": "eslint .",
+        "type-check": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@sentry/nextjs": "^8.29.0"
+    },
+    "devDependencies": {
+        "@somaprod/eslint-config": "*",
+        "@somaprod/typescript-config": "*",
+        "@types/node": "^18.0.0",
+        "eslint": "^8.0.0",
+        "typescript": "^5.0.0"
+    }
+}
